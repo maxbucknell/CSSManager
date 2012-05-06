@@ -33,6 +33,7 @@ var style_manager = (function () {
             var selectors = Object.keys(selector_map),
                 i,
                 l;
+            console.log(selector_map);
             for (i = 0, l = selectors.length; i < l; i += 1) {
                 add_rules_for_one_selector(selectors[i],
                         selector_map[selectors[i]]);
@@ -73,9 +74,11 @@ var style_manager = (function () {
                 add_many_rules(s);
             } else if (typeof s === "string" && typeof p === "object") {
                 add_rules_for_one_selector(s, p);
-            } else if (typeof s === typeof p === typeof v === "string") {
+            } else if (typeof s === "string" &&
+                        typeof p === "string" && typeof v === "string" ) {
                 add_rule(s, p, v);
             } else {
+                console.log(typeof s);
                 throw {
                     "name": "TypeError",
                     "message": "Bad arguments."
